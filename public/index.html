@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#08090c" />
+    <meta name="description" content="Controle local e extensível para dispositivos de áudio AIWA" />
+    <title>AIWA Audio Controller</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Início">
+          <span class="brand-mark">A</span>
+          <span><strong>AIWA</strong><small>AUDIO CONTROL</small></span>
+        </a>
+        <div class="connection-actions">
+          <div class="connection-copy">
+            <span id="connectionDot" class="status-dot"></span>
+            <span id="connectionText">Desconectada</span>
+          </div>
+          <button id="connectButton" class="button primary">Conectar caixa</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">CONTROLE LOCAL · SEM CONTA · SEM NUVEM</p>
+          <h1>Seu som, do<br /><em>seu jeito.</em></h1>
+          <p class="hero-copy">Equalização, luzes e controles da sua Partybox direto do Windows.</p>
+        </div>
+        <div class="speaker-visual" aria-hidden="true">
+          <div class="speaker-handle"></div>
+          <div class="speaker-body">
+            <div class="speaker-display">AIWA</div>
+            <div class="speaker-ring ring-top"><span></span></div>
+            <div class="speaker-ring ring-bottom"><span></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="device-strip">
+        <div><span class="label">DISPOSITIVO</span><strong id="deviceName">AIWA Partybox PB-06</strong></div>
+        <div><span class="label">BATERIA</span><strong id="batteryValue">—</strong></div>
+        <div><span class="label">HARDWARE</span><strong id="hardwareValue">—</strong></div>
+        <div><span class="label">CONEXÃO</span><strong id="deviceStatus">Aguardando</strong></div>
+      </section>
+
+      <div id="unsupportedBanner" class="notice hidden">
+        Use o Microsoft Edge ou Google Chrome no Windows. O navegador atual não oferece Web Bluetooth.
+      </div>
+
+      <section class="dashboard" aria-label="Controles da caixa">
+        <article class="panel equalizer-panel">
+          <div class="panel-heading">
+            <div><span class="section-number">01</span><h2>Equalizador</h2></div>
+            <select id="eqPreset" data-control aria-label="Predefinição do equalizador"></select>
+          </div>
+          <div class="eq-bands">
+            <label class="eq-band">
+              <output id="bassOutput">0</output>
+              <input id="bass" data-control type="range" min="-9" max="9" value="0" orient="vertical" />
+              <span>GRAVE</span>
+            </label>
+            <label class="eq-band">
+              <output id="midOutput">0</output>
+              <input id="mid" data-control type="range" min="-9" max="9" value="0" orient="vertical" />
+              <span>MÉDIO</span>
+            </label>
+            <label class="eq-band">
+              <output id="trebleOutput">0</output>
+              <input id="treble" data-control type="range" min="-9" max="9" value="0" orient="vertical" />
+              <span>AGUDO</span>
+            </label>
+          </div>
+          <p class="eq-note">O último ajuste fica salvo neste navegador e é restaurado automaticamente ao conectar.</p>
+          <div class="boost-row">
+            <div><strong>Boost</strong><small>Reforço instantâneo de graves</small></div>
+            <label class="switch"><input id="boost" data-control type="checkbox" /><span></span></label>
+          </div>
+        </article>
+
+        <article class="panel lights-panel">
+          <div class="panel-heading">
+            <div><span class="section-number">02</span><h2>Luzes</h2></div>
+            <label class="switch"><input id="lightsPower" data-control type="checkbox" checked /><span></span></label>
+          </div>
+          <div class="light-preview" id="lightPreview">
+            <span></span><i></i>
+            <div><small>EFEITO ATUAL</small><strong id="lightModeLabel">RGB 1</strong></div>
+          </div>
+          <label class="field-label" for="lightMode">ANIMAÇÃO</label>
+          <select id="lightMode" data-control></select>
+          <div class="split-fields">
+            <label><span class="field-label">COR</span><input id="lightColor" data-control type="color" value="#e20b1a" /></label>
+            <label><span class="field-label">INTENSIDADE <b id="intensityOutput">100%</b></span><input id="lightIntensity" data-control type="range" min="0" max="100" value="100" /></label>
+          </div>
+        </article>
+
+        <article class="panel playback-panel">
+          <div class="panel-heading"><div><span class="section-number">03</span><h2>Reprodução</h2></div></div>
+          <label class="field-label" for="source">FONTE DE ÁUDIO</label>
+          <select id="source" data-control>
+            <option value="0">Bluetooth</option><option value="1">USB</option><option value="2">Micro SD</option><option value="3">AUX</option>
+          </select>
+          <div class="transport">
+            <button data-command="previous" data-control aria-label="Faixa anterior">↶</button>
+            <button id="playButton" data-command="play" data-control class="play" aria-label="Reproduzir ou pausar">▶</button>
+            <button data-command="next" data-control aria-label="Próxima faixa">↷</button>
+          </div>
+          <div class="compact-grid">
+            <label><span class="field-label">REPETIÇÃO</span><select id="repeat" data-control><option value="0">Normal</option><option value="1">Uma faixa</option><option value="2">Aleatório</option><option value="3">Pasta</option></select></label>
+            <label><span class="field-label">DESLIGAR EM</span><select id="sleepTimer" data-control><option value="0">Desativado</option><option value="5">5 min</option><option value="15">15 min</option><option value="30">30 min</option><option value="60">1 hora</option><option value="120">2 horas</option></select></label>
+          </div>
+        </article>
+
+        <article class="panel dj-panel">
+          <div class="panel-heading"><div><span class="section-number">04</span><h2>DJ Effects</h2></div></div>
+          <p class="panel-copy">Dispare os efeitos integrados da caixa.</p>
+          <div class="dj-grid">
+            <button data-dj="0" data-control>DJ 1</button><button data-dj="3" data-control>Scratch 1</button>
+            <button data-dj="1" data-control>DJ 2</button><button data-dj="4" data-control>Scratch 2</button>
+            <button data-dj="2" data-control>DJ 3</button><button data-dj="5" data-control>Scratch 3</button>
+          </div>
+          <details class="diagnostics">
+            <summary>Diagnóstico da conexão</summary>
+            <div id="log" class="log" aria-live="polite"></div>
+          </details>
+        </article>
+      </section>
+
+      <footer>Projeto local e independente · Compatível com Chrome/Edge · Nenhum dado sai do computador</footer>
+    </main>
+    <div id="toast" class="toast" role="status"></div>
+    <script type="module" src="/app.mjs"></script>
+  </body>
+</html>
