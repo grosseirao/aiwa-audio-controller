@@ -44,6 +44,14 @@ Este projeto foi criado com auxílio de inteligência artificial da OpenAI. A IA
 
 Este é um projeto independente e não oficial. AIWA e os nomes dos produtos citados pertencem aos seus respectivos titulares.
 
+## Licença
+
+Copyright (C) 2026 AIWA Audio Controller contributors.
+
+Distribuído sob a **GNU General Public License v3.0 ou posterior** (`GPL-3.0-or-later`). Você pode usar, estudar, modificar e redistribuir o projeto. Ao distribuir o programa ou uma versão derivada, o código-fonte correspondente deve permanecer disponível sob a mesma licença. Consulte o arquivo [LICENSE](LICENSE) para os termos completos.
+
+Não há garantia para este programa, na extensão permitida pela legislação aplicável.
+
 Para rodar sem abrir automaticamente o navegador:
 
 ```powershell

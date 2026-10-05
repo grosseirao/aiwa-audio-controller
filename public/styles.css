@@ -109,6 +109,7 @@ input[type="range"] { width: 100%; }
 .log { margin-top: 12px; max-height: 116px; overflow: auto; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; line-height: 1.65; color: #b8bac3; }
 [data-control]:disabled { opacity: .42; cursor: not-allowed; }
 footer { text-align: center; color: #696b73; font-size: 11px; padding: 10px 0 35px; }
+footer a { color: #9b9da5; text-underline-offset: 3px; }
 .toast { position: fixed; z-index: 20; left: 50%; bottom: 28px; transform: translate(-50%,30px); opacity: 0; pointer-events: none; padding: 13px 18px; color: white; background: #292a30; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,.45); transition: .25s; }
 .toast.show { opacity: 1; transform: translate(-50%,0); }
 .toast.error { background: #40171b; border-color: #7d2830; }

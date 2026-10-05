@@ -36,6 +36,13 @@ const server = createServer(async (request, response) => {
     return;
   }
 
+  if (request.url === "/LICENSE") {
+    const license = await readFile(join(import.meta.dirname, "LICENSE"));
+    response.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
+    response.end(request.method === "HEAD" ? undefined : license);
+    return;
+  }
+
   let filePath = safePath(request.url || "/");
   if (!filePath) {
     response.writeHead(403);

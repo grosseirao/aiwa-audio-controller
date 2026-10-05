@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Controlador local e extensível para dispositivos de áudio AIWA",
+  "license": "GPL-3.0-or-later",
   "type": "module",
   "scripts": {
     "start": "node server.mjs --open",
